@@ -1,12 +1,12 @@
 const Card = (props) => {
   return (
-    <div className="card col-6 m-3">
-      <div className="card-header text-center text-light bg-primary h3">
-        {props.header}
+    <div className="col-12 col-md-6 mb-3">
+      <div className="fs-6 card-subtitle pb-2 text-muted border-bottom text-center">
+        {props.title}
       </div>
-      <div className="card-body bg-light">{props.children}</div>
+
+      <div className="py-3 m-0 position-relative h-100">{props.children}</div>
     </div>
   );
 };
-
 export default Card;

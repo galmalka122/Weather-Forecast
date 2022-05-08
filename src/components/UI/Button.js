@@ -1,7 +1,13 @@
-const Button = (props) => {
+const Button = ({ props }) => {
+  const className = `btn btn-round btn-outline-info ${props.className}`;
   return (
-    <button {...props.button} className={`${props.className} btn btn-primary`}>
-      {props.action}
+    <button
+      {...{
+        ...props,
+        className: className,
+      }}
+    >
+      {props.content}
     </button>
   );
 };

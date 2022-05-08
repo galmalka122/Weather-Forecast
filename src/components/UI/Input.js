@@ -1,15 +1,14 @@
-import Alert from "./Alert";
-
 const Input = (props) => {
   return (
-    <div className={props.className}>
-      <label className="form-label h6" htmlFor={props.input.id}>
-        {props.label}
+    <div className="mb-3">
+      <label className="form-label h5" htmlFor={props.input.id}>
+        {props.input.label}
       </label>
-      <input className="form-control" {...props.input}></input>
-      {props.alertMessage && (
-        <Alert name={props.name} message={props.alertMessage} />
-      )}
+      <input
+        className={`form-control pb-3 ${props.invalid ?? ""}`}
+        {...props.input}
+      ></input>
+      <div className="invalid-feedback">{props.info ?? ""}</div>
     </div>
   );
 };

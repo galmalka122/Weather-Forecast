@@ -1,9 +1,4 @@
-.banner {
-  position: relative;
-  height: 300px; 
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  }
+html,
+body {
+  height: 100%;
+}

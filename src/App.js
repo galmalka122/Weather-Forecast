@@ -1,10 +1,19 @@
 import "./App.css";
-import WeatherForm from "./components/LocationManager/WeatherForm";
-
+import LocationsList from "./components/locationsList/LocationsList";
+import WeatherForm from "./components/form/WeatherForm";
+import Header from "./components/UI/Header";
+import Jumbotrone from "./components/UI/Jumbotrone";
+import LocationsProvider from "./store/LocationsProvider";
 const App = (props) => {
   return (
     <>
-      <WeatherForm />
+      <Header />
+      <Jumbotrone header="Manage Your Locations">
+        <LocationsProvider>
+          <WeatherForm />
+          <LocationsList id="locations" />
+        </LocationsProvider>
+      </Jumbotrone>
     </>
   );
 };
