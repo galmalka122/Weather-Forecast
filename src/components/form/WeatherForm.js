@@ -35,6 +35,11 @@ const WeatherForm = (props) => {
   };
 
   const inputs = [
+    useInput("name", [
+      Validators.isEmpty,
+      Validators.isContainOnlyLetters,
+      ctx.isValidName,
+    ]),
     useInput("longitude", [
       Validators.isEmpty,
       Validators.isFloatNumber,
@@ -44,11 +49,6 @@ const WeatherForm = (props) => {
       Validators.isEmpty,
       Validators.isFloatNumber,
       Validators.isValidLatitude,
-    ]),
-    useInput("name", [
-      Validators.isEmpty,
-      Validators.isContainOnlyLetters,
-      ctx.isValidName,
     ]),
   ];
 

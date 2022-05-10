@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import LocationsContext from "./locationsCtx";
 const LocationsProvider = (props) => {
+  const initialSelected = {
+    name: undefined,
+    longitude: undefined,
+    latitude: undefined,
+  };
   const [locations, setLocations] = useState([]);
+  const [selected, setSelected] = useState(initialSelected);
 
   const addLocationHandler = (location) => {
     const [...newLocations] = [...locations, location];
@@ -9,6 +15,17 @@ const LocationsProvider = (props) => {
   };
 
   const locationsNames = locations.map((location) => location.name);
+
+  const handleRemove = (location) => {
+    if (location.name === selected.name) {
+      setSelected(initialSelected);
+    }
+    setLocations(
+      [...locations].filter((el) => {
+        return el.name !== location.name;
+      })
+    );
+  };
 
   const isValidName = (input) => {
     return {
@@ -18,10 +35,18 @@ const LocationsProvider = (props) => {
     };
   };
 
+  const handleSelect = (location) => {
+    const newLocation = { ...location };
+    setSelected(newLocation);
+  };
+
   const locationsCtx = {
     locations,
+    selected,
     addLocation: addLocationHandler,
     isValidName,
+    handleRemove,
+    handleSelect,
   };
 
   return (
