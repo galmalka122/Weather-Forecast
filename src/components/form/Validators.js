@@ -8,7 +8,7 @@ export const Validators = (function () {
 
   const isContainOnlyLetters = (input) => {
     return {
-      isValid: /^[a-zA-Z]+$/.test(input.value),
+      isValid: /^[a-zA-Z ]*$/.test(input.value),
       message: `${input.name} must contain only english letters`,
     };
   };

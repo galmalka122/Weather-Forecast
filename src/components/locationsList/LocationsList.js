@@ -8,20 +8,6 @@ const LocationsList = (props) => {
   const ctx = useContext(LocationsContext);
   const onEdit = useLocation().pathname === "/manage";
 
-  const weatherInfo = new URL("https://www.7timer.info/bin/api.pl");
-  const weatherImage = new URL("https://www.7timer.info/bin/astro.php");
-  const infoParams = {
-    product: "civillight",
-    output: "json",
-  };
-  const imageParams = {
-    ac: 0,
-    lang: "en",
-    unit: "metric",
-    output: "internal",
-    tzshift: 0,
-  };
-
   const onSelectHandler = (location) => {
     if (!onEdit) {
       ctx.handleSelect(location);
@@ -35,7 +21,7 @@ const LocationsList = (props) => {
         `` +
         `${
           onEdit
-            ? ""
+            ? "pe-none"
             : ctx.selected.name === location.name
             ? "list-group-item-action active"
             : "list-group-item-action"

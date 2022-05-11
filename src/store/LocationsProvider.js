@@ -38,6 +38,17 @@ const LocationsProvider = (props) => {
   const handleSelect = (location) => {
     const newLocation = { ...location };
     setSelected(newLocation);
+    const { name, ...details } = selected;
+    debugger;
+    const [lon, lat] = details;
+    const weatherInfo = new URL("https://www.7timer.info/bin/api.pl");
+    weatherInfo.search = new URLSearchParams({
+      lon,
+      lat,
+      product: "civillight",
+      output: "json",
+    });
+    debugger;
   };
 
   const locationsCtx = {

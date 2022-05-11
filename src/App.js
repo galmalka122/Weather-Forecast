@@ -6,15 +6,16 @@ import Jumbotrone from "./components/UI/Jumbotrone";
 import LocationsProvider from "./store/LocationsProvider";
 import { Route, Routes } from "react-router-dom";
 import LocationInfo from "./components/locationInformation/LocationInfo";
+import Header from "./components/UI/Header";
 const App = (props) => {
   return (
     <LocationsProvider>
       <Routes>
-        <Route path="/" element={<Navigator />}>
+        <Route path="/" element={<Header />}>
           <Route
             path="manage"
             element={
-              <Jumbotrone header="Manage Your Locations">
+              <Jumbotrone>
                 <LocationsList id="locations" />
                 <WeatherForm />
               </Jumbotrone>
@@ -23,7 +24,7 @@ const App = (props) => {
           <Route
             index
             element={
-              <Jumbotrone header="Display Weather Forecast">
+              <Jumbotrone>
                 <LocationsList id="locations" />
                 <LocationInfo />
               </Jumbotrone>

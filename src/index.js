@@ -9,7 +9,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div className="container-fluid py-4">
     <BrowserRouter>
-      <Header />
       <App />
     </BrowserRouter>
   </div>

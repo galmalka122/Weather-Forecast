@@ -9,7 +9,7 @@ const LocationItem = (props) => {
         {props.onEdit && (
           <span
             type="button"
-            className="btn-close btn-danger"
+            className="btn-close btn-danger pe-auto"
             aria-label="Close"
             onClick={props.onRemove}
           />
