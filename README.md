@@ -4,12 +4,26 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Authors
 
-Student name - student email.
+Gal Meir Malka - <a href="galma@edu.hac.ac.il">galma@edu.hac.ac.il</a>
 
 ## General Information
 
+This project implement a weather API. User enters a valid location's parameters <br/>
+and name and the site fetches the forecast from <a href="https://7timer.info/">7timer</a> site.
+
+## Notes
+
+If the user leaves the forecast path the recent details will disappear.
+<br/><br/>For large view ports the Forecast contains details for 7 days. for smaller view ports <br/>
+the forecast first shows the details for the current day and contains buttons to switch</br>
+between following days.<br/><br/>
+The astronomical image can be toggled with button to preserve cleaner site.
+</br></br>
+Some elements views are implemented by css.
+
+##React
 ### libraries used for this project:
-react-router, ...
+react, react-dom/client, react-router-dom, react-router.
 
 ## Available Scripts
 
@@ -77,3 +91,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
