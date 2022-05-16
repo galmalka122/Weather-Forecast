@@ -1,34 +1,25 @@
 import "./App.css";
-import { useState } from "react";
-import Form from "./components/Form";
-
-function App() {
-  const [result, setResult] = useState("");
-  const [imgResult, setImageResult] = useState("");
-
-  function receiveResultFromServer(result) {
-    setResult(result);
-  }
-
-  function receiveImageResultFromServer(result) {
-    setImageResult(result);
-  }
-
+import { Route, Routes } from "react-router-dom";
+import Index from "./pages/Index";
+import Manage from "./pages/Manage";
+import Navigator from "./components/UI/Navigator";
+import Spinner from "./components/UI/Spinner";
+import Modal from "./components/UI/Modal";
+import NoPage from "./components/UI/NoPage";
+const App = (props) => {
   return (
-    <div className="App">
-      <Form
-        url={"https://www.7timer.info/bin/api.pl"}
-        receiveResult={receiveResultFromServer}
-        reciveImageResult={receiveImageResultFromServer}
-      />
-      {result ? (
-        <div className="border p-3">Result is {JSON.stringify(result)}</div>
-      ) : (
-        ""
-      )}
-      {imgResult ? <img src={imgResult} alt="Weather Visual"></img> : ""}
-    </div>
+    <>
+      <Modal />
+      <Spinner>
+        <Routes>
+          <Route path="/" element={<Navigator />}>
+            <Route index element={<Index />} />
+            <Route path="manage" element={<Manage />} />
+          </Route>
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </Spinner>
+    </>
   );
-}
-
+};
 export default App;

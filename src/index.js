@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import LocationsProvider from "./store/LocationsProvider";
+import Header from "./components/UI/Header";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <StrictMode>
+    <div className="container-fluid py-4">
+      <BrowserRouter>
+        <LocationsProvider>
+          <Header iconName="icon" title="Weather Manager" />
+          <App />
+        </LocationsProvider>
+      </BrowserRouter>
+    </div>
+  </StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
