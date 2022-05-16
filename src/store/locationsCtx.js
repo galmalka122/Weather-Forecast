@@ -1,6 +1,6 @@
 import { createContext } from "react";
 const LocationsContext = createContext({
-  showForcast: false,
+  showForecast: false,
   pathname: "",
   locations: [],
   selected: {},
@@ -11,7 +11,7 @@ const LocationsContext = createContext({
   addLocation: (location) => {},
   handleRemove: (location) => {},
   handleSelect: (location) => {},
-  onShowForcastHandler: () => {},
+  onShowForecastHandler: () => {},
   handleModalClose: () => {},
 });
 export default LocationsContext;

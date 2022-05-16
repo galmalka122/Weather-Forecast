@@ -1,19 +1,25 @@
 import { useContext, useState, useEffect } from "react";
 import LocationsContext from "../../store/locationsCtx";
 import Card from "../UI/Card";
-
 import ForecastDetail from "./ForecastDetail";
 
 const ForeCast = (props) => {
-  const [date, setDate] = useState(0);
-  const [title, setTitle] = useState("");
-  const ctx = useContext(LocationsContext);
+  const [date, setDate] = useState(0); //for date selection on small view ports forecast table
+  const [title, setTitle] = useState(""); //to change card's title when new forecast fetched
+  const ctx = useContext(LocationsContext); //the site's context
 
+  /**
+   * this hook sets the card's title and changes the day index (for smaller view ports) if the user's fetches new data.
+   */
   useEffect(() => {
     setTitle(ctx.selected.name);
     setDate(0);
   }, [ctx.data?.weather]);
 
+  /**
+   * this handler changes the current date forecast (for smaller view ports)
+   * @param index the user's desired forecast date
+   */
   const onClickHandler = (index) => {
     setDate(index);
   };
@@ -31,7 +37,7 @@ const ForeCast = (props) => {
               aria-expanded="false"
               aria-controls="meteoCollapse"
             >
-              Show Astro
+              Show Astronomical Image
             </button>
           </div>
           <div className="row justify-content-center">

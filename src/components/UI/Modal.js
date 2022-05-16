@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import LocationsContext from "../../store/locationsCtx";
-const Modal = (props) => {
-  const ctx = useContext(LocationsContext);
-  const modalProps = {
+const Modal = () => {
+
+  const ctx = useContext(LocationsContext); //the site's context
+  const modalProps = { //defines properties when modal is shown/hidden
     className: `position-absolute top-25 modal${
       ctx.error ? " show d-block" : " d-none"
     }`,
@@ -20,7 +21,7 @@ const Modal = (props) => {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-            ></button>
+            />
           </div>
           <div className="modal-body fs-5">
             <p>

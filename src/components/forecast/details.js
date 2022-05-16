@@ -1,3 +1,7 @@
+/**
+ * object to transform wind data from the fetched json
+ * @type {{"1": string, "2": string, "3": string, "4": string, "5": string, "6": string, "7": string, "8": string}}
+ */
 export const winds = {
   1: "No wind",
   2: `0.3-3.4m/s (light)`,
@@ -9,6 +13,11 @@ export const winds = {
   8: `Over 32.6m/s (hurricane)`,
 };
 
+/**
+ * object to transform weather data from the fetched json
+ * the object contains the relevant weather type, description and icon
+ * @type {{rain: {meaning: string, name: string, type: string}, rainsnow: {meaning: string, name: string, type: string}, lightrain: {meaning: string, name: string, type: string}, oshower: {meaning: string, name: string, type: string}, clear: {meaning: string, name: string, type: string}, ishower: {meaning: string, name: string, type: string}, humid: {meaning: string, name: string, type: string}, mcloudy: {meaning: string, name: string, type: string}, tsrain: {meaning: string, name: string, type: string}, windy: {meaning: string, name: string, type: string}, cloudy: {meaning: string, name: string, type: string}, lightsnow: {meaning: string, name: string, type: string}, snow: {meaning: string, name: string, type: string}, pcloudy: {meaning: string, name: string, type: string}, ts: {meaning: string, name: string, type: string}}}
+ */
 export const types = {
   clear: {
     name: "clear",

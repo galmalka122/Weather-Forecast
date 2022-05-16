@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 
-const Navigator = (props) => {
-  const path = useLocation().pathname;
+const Navigator = () => {
+  const path = useLocation().pathname; //the current displayed path
   return (
     <div className="container">
       <div className="my-3">

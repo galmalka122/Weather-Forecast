@@ -7,7 +7,7 @@ const Input = (props) => {
       <input
         className={`form-control pb-3 ${props.invalid ?? ""}`}
         {...props.input}
-      ></input>
+      />
       <div className="invalid-feedback">{props.info ?? ""}</div>
     </div>
   );

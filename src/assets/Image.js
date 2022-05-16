@@ -13,7 +13,6 @@ const Image = (props) => {
       </img>
     );
   } catch (error) {
-    console.log(`Image with name "${props.name}" does not exist`);
     return null;
   }
 };

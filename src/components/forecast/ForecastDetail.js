@@ -2,8 +2,9 @@ import Image from "../../assets/Image";
 import { winds, types } from "./details";
 
 const ForecastDetail = (props) => {
-  const tdata = props.data.map((el, index) => {
-    const date = new Date(
+  const tData = props.data.map((el) => {
+    //transforms the data to table with the details objects
+    const date = new Date( //applies the date for details
       el.date.toString().replace(/(\d{4})(\d{2})(\d{2})/g, "$1-$2-$3")
     ).toLocaleDateString("en-Us", {
       weekday: "long",
@@ -11,6 +12,7 @@ const ForecastDetail = (props) => {
       month: "numeric",
       day: "numeric",
     });
+    //transform fetched data
     const params = {
       "": <Image name={types[el.weather].name} />,
       date: date,
@@ -26,7 +28,8 @@ const ForecastDetail = (props) => {
     ));
   });
 
-  const btns = props.data.map((el, index) => {
+  const buttons = props.data.map((el, index) => {
+    //creates the days buttons (for smaller view ports)
     const date = new Date(
       el.date.toString().replace(/(\d{4})(\d{2})(\d{2})/g, "$1-$2-$3")
     ).toLocaleDateString("en-Us", {
@@ -60,7 +63,7 @@ const ForecastDetail = (props) => {
             </tr>
           </thead>
           <tbody>
-            {tdata.map((data, index) => {
+            {tData.map((data, index) => {
               return (
                 <tr
                   key={index}
@@ -75,7 +78,7 @@ const ForecastDetail = (props) => {
       </div>
       <div className="col-12 d-flex justify-content-center">
         <div className="btn-group btn-group-sm btn-none d-none" role="group">
-          {btns}
+          {buttons}
         </div>
       </div>
     </div>

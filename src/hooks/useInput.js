@@ -1,14 +1,23 @@
 import { useReducer } from "react";
 
 const initialInputState = {
+  //the initial input states
   value: "",
   validationClass: "",
   isValid: false,
 };
 
+/**
+ * reduces inputs states function's
+ * @param state - the current input's state
+ * @param action - the desired new state
+ * @returns {(*&{validationClass: (string|*)})|(*&{isValid: *, message, validationClass: string, value})|
+ * (*&{validationClass: string})|*} - the inputs states
+ */
 const inputStateReducer = (state, action) => {
   switch (action.type) {
     case "INPUT": {
+      //to handle input's changes
       return {
         ...state,
         validationClass: "",
@@ -19,10 +28,12 @@ const inputStateReducer = (state, action) => {
     }
 
     case "RESET": {
+      //to handle clear
       return { ...action.data };
     }
 
     case "HIDE": {
+      //to handle input's validation message
       return {
         ...state,
         validationClass: "",
@@ -30,6 +41,7 @@ const inputStateReducer = (state, action) => {
     }
 
     case "SHOW": {
+      //to show input's validation message
       return {
         ...state,
         validationClass: action.validationClass,
@@ -40,11 +52,24 @@ const inputStateReducer = (state, action) => {
   }
 };
 
+/**
+ * hook to handle input's states
+ * @param inputTitle - the input's title
+ * @param validators - the input's validators
+ * @returns {{input: {onChange: valueChangeHandler, name, label: string, value, key}, isValid: *,
+ * toggleInfo: toggleInfo, reset: reset, message, validationClass: (string|*)}} - the input's states
+ */
 const useInput = (inputTitle, validators) => {
   const [inputState, dispatch] = useReducer(inputStateReducer, {
+    //apply reducer function
     ...initialInputState,
     message: `${inputTitle} is required`,
   });
+
+  /**
+   * to handle value changes
+   * @param event - the value change event
+   */
   const valueChangeHandler = (event) => {
     const value = event.target.value.trim();
     let a = { isValid: true, message: "" };
@@ -66,6 +91,9 @@ const useInput = (inputTitle, validators) => {
     });
   };
 
+  /**
+   * to handle form clear
+   */
   const reset = () => {
     dispatch({
       type: "RESET",
@@ -76,6 +104,10 @@ const useInput = (inputTitle, validators) => {
     });
   };
 
+  /**
+   * to toggle input's validations states
+   * @param show - th toggle mode indicator
+   */
   const toggleInfo = (show) => {
     if (show) {
       const validationClass = inputState.isValid ? "is-valid" : "is-invalid";
@@ -97,8 +129,8 @@ const useInput = (inputTitle, validators) => {
 
     validationClass: inputState.validationClass,
     message: inputState.message,
-    toggleInfo,
     isValid: inputState.isValid,
+    toggleInfo,
     reset,
   };
 };

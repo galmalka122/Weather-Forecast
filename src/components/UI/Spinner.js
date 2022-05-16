@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import LocationsContext from "../../store/locationsCtx";
+
 const Spinner = (props) => {
-  const ctx = useContext(LocationsContext);
-  const className = ctx.isLoading || ctx.error ? "opacity-25" : null;
+  const ctx = useContext(LocationsContext); //the site's context
+  const className = ctx.isLoading || ctx.error ? "opacity-25" : null; //defines the classes when spinner shown/hidden
 
   return (
     <>
@@ -15,7 +16,7 @@ const Spinner = (props) => {
           className="spinner-border"
           style={{ width: "6rem", height: "6rem" }}
           role="status"
-        ></div>
+        />
         <div className="fs-3 fw-bold">Loading Forecast...</div>
       </div>
       <div className={className}>{props.children}</div>

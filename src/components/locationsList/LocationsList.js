@@ -4,16 +4,22 @@ import LocationItem from "./LocationItem";
 import Card from "../UI/Card";
 import LocationsContext from "../../store/locationsCtx";
 
-const LocationsList = (props) => {
-  const ctx = useContext(LocationsContext);
-  const onEdit = useLocation().pathname === "/manage";
+const LocationsList = () => {
+  const ctx = useContext(LocationsContext); //the site's context
+  const onEdit = useLocation().pathname === "/manage"; //the path's state
 
+  /**
+   * hook to handle when user selects new location from the saved list
+   * @param location - the selected location
+   */
   const onSelectHandler = (location) => {
-    if (!onEdit) {
-      ctx.handleSelect(location);
-    }
+    ctx.handleSelect(location);
   };
 
+  /**
+   * creates the user's saved locations list. if none saved shows a message on card
+   * @type {unknown[]|JSX.Element}
+   */
   const list =
     ctx.locations.length !== 0 ? (
       ctx.locations.map((location) => {

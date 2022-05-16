@@ -12,7 +12,7 @@ root.render(
     <div className="container-fluid py-4">
       <BrowserRouter>
         <LocationsProvider>
-          <Header />
+          <Header iconName="icon" title="Weather Manager" />
           <App />
         </LocationsProvider>
       </BrowserRouter>
