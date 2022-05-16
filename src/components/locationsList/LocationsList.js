@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import LocationItem from "./LocationItem";
 import Card from "../UI/Card";
@@ -15,29 +15,31 @@ const LocationsList = (props) => {
   };
 
   const list =
-    ctx.locations &&
-    ctx.locations.map((location) => {
-      const className =
-        `` +
-        `${
-          onEdit
-            ? "pe-none"
-            : ctx.selected.name === location.name
-            ? "list-group-item-action active"
-            : "list-group-item-action"
-        }`;
-      return (
-        <LocationItem
-          key={location.name}
-          {...location}
-          className={className}
-          onClick={() => onSelectHandler(location)}
-          onEdit={onEdit}
-          onRemove={() => ctx.handleRemove(location)}
-        />
-      );
-    });
-
+    ctx.locations.length !== 0 ? (
+      ctx.locations.map((location) => {
+        const className =
+          `` +
+          `${
+            onEdit
+              ? "pe-none"
+              : ctx.selected.name === location.name
+              ? "list-group-item-action active"
+              : "list-group-item-action"
+          }`;
+        return (
+          <LocationItem
+            key={location.name}
+            {...location}
+            className={className}
+            onClick={() => onSelectHandler(location)}
+            onEdit={onEdit}
+            onRemove={() => ctx.handleRemove(location)}
+          />
+        );
+      })
+    ) : (
+      <span className="text-center">No locatios saved yet...</span>
+    );
   return (
     <Card title="Saved Locations">
       <div className="locations list-group overflow-auto">{list}</div>

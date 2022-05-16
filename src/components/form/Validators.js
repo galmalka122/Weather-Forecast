@@ -29,7 +29,7 @@ export const Validators = (function () {
 
   const isFloatNumber = (input) => {
     return {
-      isValid: !!parseFloat(+input.value),
+      isValid: !isNaN(parseFloat(+input.value)),
       message: `${input.name} must be a decimal number: only digits, a single minus and a single dot ar allowed`,
     };
   };

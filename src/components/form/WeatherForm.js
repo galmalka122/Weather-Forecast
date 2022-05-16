@@ -7,7 +7,6 @@ import LocationsContext from "../../store/locationsCtx";
 import { useContext, useState } from "react";
 
 const WeatherForm = (props) => {
-  const [loading, setLoading] = useState(false);
   const ctx = useContext(LocationsContext);
 
   const clearForm = () => inputs.forEach((input) => input.reset());
@@ -20,7 +19,7 @@ const WeatherForm = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    setLoading(true);
+
     toggleInfo(true);
     if (isValidForm()) {
       clearForm();
@@ -31,7 +30,6 @@ const WeatherForm = (props) => {
         )
       );
     }
-    setLoading(false);
   };
 
   const inputs = [
@@ -58,19 +56,8 @@ const WeatherForm = (props) => {
   ];
 
   return (
-    <Card title="Add New Location">
-      <form
-        className={`${loading ? " opacity-25" : ""}`}
-        onSubmit={onSubmitHandler}
-      >
-        {loading && (
-          <div
-            className="spinner-border text-dark position-absolute top-50 start-50"
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        )}
+    <Card title="Add New Location" className="col-12 col-md-6 mb-3">
+      <form onSubmit={onSubmitHandler}>
         {inputs.map((el) => (
           <Input
             key={el.input.name}
@@ -78,20 +65,11 @@ const WeatherForm = (props) => {
             info={el.message}
             invalid={el.validationClass}
             type="text"
-            disable={loading}
           />
         ))}
         <div className="pt-3 gap-2 d-flex justify-content-between">
           {buttons.map((btn) => (
-            <Button
-              key={btn.content}
-              props={{
-                onClick: btn.onClick,
-                disabled: loading,
-                className: "col btn-block fw-bolder",
-                content: btn.content,
-              }}
-            />
+            <Button key={btn.content} {...btn} />
           ))}
         </div>
       </form>

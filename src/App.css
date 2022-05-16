@@ -1,9 +1,50 @@
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .locations {
     position: absolute;
     top: 1em;
     bottom: 3em;
     left: 0;
     right: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  tr.none {
+    display: none;
+  }
+  .btn-none {
+    display: flex !important;
+  }
+
+  table.table-md-vert thead {
+    display: none;
+  }
+
+  table.table-md-vert tbody td {
+    display: flex;
+    padding: auto;
+  }
+
+  table.table-md-vert tbody tr td:first-child {
+    color: #fff;
+    justify-content: center;
+  }
+  table.table-md-vert tbody tr td:first-child a {
+    color: #fff;
+  }
+  table.table-md-vert tbody tr td:first-child:before {
+    color: rgb(225, 181, 71);
+  }
+  table.table-md-vert tbody td:not(:first-child):before {
+    content: attr(data-th);
+    font-weight: bold;
+    display: inline-block;
+    width: 10rem;
+  }
+  table.selcted.table-md-vert tr th:last-child,
+  table.selcted.table-md-vert tr td:last-child {
+    max-width: 100% !important;
+    min-width: 100px !important;
+    width: 100% !important;
   }
 }

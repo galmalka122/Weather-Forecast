@@ -1,17 +1,22 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+
 const Navigator = (props) => {
+  const path = useLocation().pathname;
   return (
     <div className="container">
       <div className="my-3">
-        <ul className="nav nav-tabs justify-content-center card-header text-center  text-light bg-primary bg-gradient fs-3 fw-bold">
-          <li className="nav-item text-break">
-            <Link to="/" className="nav-link">
-              Display Weather Forecast
+        <ul className="nav nav-pills justify-content-center">
+          <li className="nav-item">
+            <Link to="/" className={`nav-link${path === "/" ? " active" : ""}`}>
+              Forecast
             </Link>
           </li>
-          <li className="nav-item text-break">
-            <Link to="/manage" className="nav-link">
-              Manage Your Locations
+          <li className="nav-item">
+            <Link
+              to="/manage"
+              className={`nav-link${path === "/manage" ? " active" : ""}`}
+            >
+              Locations
             </Link>
           </li>
         </ul>
